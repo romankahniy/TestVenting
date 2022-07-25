@@ -1,5 +1,4 @@
 import sqlite3
-import db
 
 from datetime import date
 today = date.today()
@@ -32,27 +31,7 @@ def category_search():
         print(row)
     pass
 
-
-# A function to output a specific product
-def item_search():
-    item_sel = input('Please type the code of item (1 column): ')
-    cursor.execute("SELECT item_name FROM items_db WHERE id = " + item_sel)
-    sel_result = cursor.fetchall()
-    cursor.execute("SELECT price FROM items_db WHERE id = " + item_sel)
-    price_result = cursor.fetchall()
-    print('You select:')
-    print(sel_result)
-    print('His price is:')
-    print(price_result)
-
 # Function for purchase / price check
-def item_purchase():
-    purchase = input('Pay the price of the selected product: ')
-    cursor.execute(f"SELECT price FROM items_db WHERE item_price == ?", (purchase))
-    pur_result = cursor.fetchall()
-    print(f"You pay {pur_result}. Have a good day!")
-    print(today)
-
 def item_add():
     item_sel = input('Please type the code of item (1 column): ')
     cursor.execute("SELECT * FROM items_db WHERE id = ? ", (item_sel))
